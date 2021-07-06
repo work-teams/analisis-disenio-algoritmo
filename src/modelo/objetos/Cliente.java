@@ -3,21 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package modelo.objetos;
 
 /**
  *
  * @author krypt97
  */
 public class Cliente {
-    // ATRIBUTS DE CLASE
+    // ATRIBUTOS DE CLASE
     private String dni;
     private String nombre;
     private String apellido;
-    private String estado_paciente;
+    private int estado_paciente; // 0=GRAVE, 1=MODERADO, 2=LEVE
     
     // CONSTRUCTOR
-    public Cliente(String dni, String nombre, String apellido, String estado_paciente) {
+    public Cliente(String dni, String nombre, String apellido, int estado_paciente) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -49,12 +49,17 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public String getEstado_paciente() {
+    public int getEstado_paciente() {
         return estado_paciente;
     }
 
-    public void setEstado_paciente(String estado_paciente) {
+    public void setEstado_paciente(int estado_paciente) {
         this.estado_paciente = estado_paciente;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", estado_paciente=" + estado_paciente + '}';
     }
     
 }

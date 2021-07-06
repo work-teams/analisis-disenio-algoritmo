@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package modelo.estructuras;
+
+import modelo.objetos.Pedido;
 
 /**
  *
  * @author krypt97
  */
-public class MiColaLlenado implements ColaLlenado {
+public class ColaDeLlenado implements Cola {
     
-    private Nodo cabeza, ultimo;
+    protected Nodo cabeza, ultimo;
     
-    private class Nodo {
+    public class Nodo {
         public Pedido pedido;
         public Nodo siguiente;
 

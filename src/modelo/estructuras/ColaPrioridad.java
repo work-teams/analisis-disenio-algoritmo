@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelo;
+package modelo.estructuras;
 
 /**
  *
  * @author krypt97
  */
-public interface ColaLlenado {
-    // METODOS A IMPLEMENTAR
-    public void encolar(Pedido miPedido);
-    public void desencolar();
-    public Pedido obtener();
+public interface ColaPrioridad {
+    public void ordenarPrioridad();
 }
