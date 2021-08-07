@@ -10,5 +10,7 @@ package modelo.estructuras;
  * @author krypt97
  */
 public interface ColaPrioridad {
+
+    // MÉTODOS A IMPLEMENTAR
     public void ordenarPrioridad();
 }

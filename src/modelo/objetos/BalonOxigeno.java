@@ -5,11 +5,14 @@
  */
 package modelo.objetos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author krypt97
  */
-public class BalonOxigeno {
+public class BalonOxigeno implements Serializable {
+
     // ATRIBUTOS DE CLASE
     private String codigo_balon;
     private float capacidad;

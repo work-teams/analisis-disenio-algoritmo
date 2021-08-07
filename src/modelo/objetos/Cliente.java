@@ -5,17 +5,20 @@
  */
 package modelo.objetos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author krypt97
  */
-public class Cliente {
+public class Cliente implements Serializable {
+
     // ATRIBUTOS DE CLASE
     private String dni;
     private String nombre;
     private String apellido;
     private int estado_paciente; // 0=GRAVE, 1=MODERADO, 2=LEVE
-    
+
     // CONSTRUCTOR
     public Cliente(String dni, String nombre, String apellido, int estado_paciente) {
         this.dni = dni;
@@ -61,5 +64,5 @@ public class Cliente {
     public String toString() {
         return "Cliente{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", estado_paciente=" + estado_paciente + '}';
     }
-    
+
 }

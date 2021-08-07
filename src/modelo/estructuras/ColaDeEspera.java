@@ -33,5 +33,5 @@ public class ColaDeEspera extends ColaDeLlenado implements ColaPrioridad {
             }
         }
     }
-     
+
 }
