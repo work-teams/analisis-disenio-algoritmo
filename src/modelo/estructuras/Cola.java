@@ -12,8 +12,11 @@ import modelo.objetos.Pedido;
  * @author krypt97
  */
 public interface Cola {
+
     // METODOS A IMPLEMENTAR
     public void encolar(Pedido miPedido);
+
     public void desencolar();
+
     public Pedido obtener();
 }

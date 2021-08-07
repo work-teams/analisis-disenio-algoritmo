@@ -5,6 +5,7 @@
  */
 package modelo.objetos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,7 +13,9 @@ import java.util.Date;
  *
  * @author krypt97
  */
-public class Pedido {
+public class Pedido implements Serializable {
+
+    // ATRIBUTOS DE CLASE
     private int id_pedido;
     private Date fecha_pedido;
     private Cliente miCliente;
@@ -20,6 +23,7 @@ public class Pedido {
     private boolean valido = false;
     private boolean despachado = false;
 
+    // CONSTRUCTOR
     public Pedido(int id_pedido, Date fecha_pedido, Cliente miCliente, ArrayList<BalonOxigeno> miBalonOxigeno) {
         this.id_pedido = id_pedido;
         this.fecha_pedido = fecha_pedido;
@@ -27,6 +31,7 @@ public class Pedido {
         this.miBalonOxigeno = miBalonOxigeno;
     }
 
+    // GETTERS Y SETTERS
     public int getId_pedido() {
         return id_pedido;
     }
@@ -74,5 +79,5 @@ public class Pedido {
     public void setDespachado(boolean despachado) {
         this.despachado = despachado;
     }
-    
+
 }

@@ -12,19 +12,23 @@ import modelo.objetos.Pedido;
  * @author krypt97
  */
 public class ColaDeLlenado implements Cola {
-    
+
+    // ATRIBUTOS DE CLASE
     protected Nodo cabeza, ultimo;
-    
+
+    // CLASE INTERNA NODO
     public class Nodo {
+
         public Pedido pedido;
         public Nodo siguiente;
 
         public Nodo(Pedido miPedido) {
             this.pedido = miPedido;
         }
-        
+
     }
 
+    // MÉTODOS DE CLASE
     @Override
     public void encolar(Pedido pedido) {
         Nodo nuevoNodo = new Nodo(pedido);
@@ -56,5 +60,5 @@ public class ColaDeLlenado implements Cola {
             return cabeza.pedido;
         }
     }
-    
+
 }
