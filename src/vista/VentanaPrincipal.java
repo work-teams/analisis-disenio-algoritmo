@@ -27,57 +27,64 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BarraLateral = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        PanelPrincipal = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BarraLateral.setBackground(new java.awt.Color(51, 153, 255));
-        BarraLateral.setLayout(new java.awt.GridLayout(2, 3));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        BarraLateral.add(jLabel2);
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 20)); // NOI18N
+        jLabel1.setText("Sistema de colas  - LLenado balones de oxígeno");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 18, -1, -1));
 
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(297, 40));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 60));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 297, Short.MAX_VALUE)
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jButton1.setText("Registrar pedido");
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 9, 140, 42));
+
+        jButton2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jButton2.setText("Cola de espera");
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 9, 140, 42));
+
+        jButton3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jButton3.setText("Cola de llenado");
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 9, 140, 42));
+
+        jButton4.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jButton4.setText("Rechazados");
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 9, 140, 42));
+
+        jButton5.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jButton5.setText("Historial");
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 9, 140, 42));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 800, 60));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 780, Short.MAX_VALUE)
         );
 
-        BarraLateral.add(jPanel1);
-        BarraLateral.add(jLabel3);
-
-        jButton1.setText("REGISTRAR PEDIDO");
-        jButton1.setOpaque(false);
-        BarraLateral.add(jButton1);
-
-        jButton2.setText("COLA DE ESPERA");
-        jButton2.setOpaque(false);
-        BarraLateral.add(jButton2);
-
-        jButton3.setText("COLA DE LLENADO");
-        jButton3.setOpaque(false);
-        BarraLateral.add(jButton3);
-
-        getContentPane().add(BarraLateral, java.awt.BorderLayout.NORTH);
-
-        PanelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-        PanelPrincipal.setLayout(new java.awt.BorderLayout());
-        getContentPane().add(PanelPrincipal, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 800, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -93,7 +100,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("FlatLaf Light".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -118,13 +125,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel BarraLateral;
-    public javax.swing.JPanel PanelPrincipal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
