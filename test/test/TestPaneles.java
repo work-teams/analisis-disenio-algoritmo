@@ -35,7 +35,7 @@ public class TestPaneles {
         // Instancia ventana principal
         // No colocar absolute layout al JFrame (solo a sus componenetes) sino, no agrega los paneles
         VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
-        miVentanaPrincipal.setSize(800, 930); // No sé, porque no cuadra el 900 high del diseño
+        miVentanaPrincipal.setSize(800, 930); // barra superior + area de diseño
 
         // Instancias de paneles
         PanelRegistrarPedido miRegistrarPedido = new PanelRegistrarPedido();
