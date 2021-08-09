@@ -9,12 +9,12 @@ package vista;
  *
  * @author krypt97
  */
-public class PanelRegistrarPedido extends javax.swing.JPanel {
+public class PanelPedidosRechazados extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelRegistrarPedido
      */
-    public PanelRegistrarPedido() {
+    public PanelPedidosRechazados() {
         initComponents();
     }
 
@@ -27,6 +27,9 @@ public class PanelRegistrarPedido extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel0 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -53,6 +56,26 @@ public class PanelRegistrarPedido extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel0.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jPanel0.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 780, 189));
+
+        add(jPanel0, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 209));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -85,7 +108,7 @@ public class PanelRegistrarPedido extends javax.swing.JPanel {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 44, 358, 34));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 191));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 209, 800, 191));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -123,32 +146,32 @@ public class PanelRegistrarPedido extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 780, 359));
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 780, 150));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 98, 800, 379));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 98, 800, 170));
 
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton1.setText("Agregar balón de oxígeno");
+        jButton1.setText("Modificar balón de oxígeno");
         jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 10, 280, 36));
 
         jButton2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jButton2.setText("Eliminar balón de oxígeno");
         jPanel6.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 10, 280, 36));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 477, 800, 56));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 268, 800, 56));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 191, 800, 533));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 800, 324));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton3.setText("Generar pedido");
+        jButton3.setText("Modificar pedido");
         jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 10, 280, 36));
 
         jButton4.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton4.setText("Cancelar pedido");
+        jButton4.setText("Eliminar pedido");
         jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 10, 280, 36));
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 724, 800, 56));
@@ -167,6 +190,7 @@ public class PanelRegistrarPedido extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel0;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -174,7 +198,9 @@ public class PanelRegistrarPedido extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
