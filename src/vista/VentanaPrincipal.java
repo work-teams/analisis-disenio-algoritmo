@@ -5,11 +5,15 @@
  */
 package vista;
 
+import controlador.ControladorVistas;
+
 /**
  *
  * @author krypt97
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+
+    private ControladorVistas miControladorVistas;
 
     /**
      * Creates new form VentanaPrincipal
@@ -30,11 +34,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnColaEspera = new javax.swing.JButton();
+        btnColaLlenado = new javax.swing.JButton();
+        btnRechazados = new javax.swing.JButton();
+        btnHistorial = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,25 +52,50 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton1.setText("Registrar pedido");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 9, 140, 42));
+        btnRegistrar.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnRegistrar.setText("Registrar pedido");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrar(evt);
+            }
+        });
+        jPanel2.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 9, 140, 42));
 
-        jButton2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton2.setText("Cola de espera");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 9, 140, 42));
+        btnColaEspera.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnColaEspera.setText("Cola de espera");
+        btnColaEspera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColaEspera(evt);
+            }
+        });
+        jPanel2.add(btnColaEspera, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 9, 140, 42));
 
-        jButton3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton3.setText("Cola de llenado");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 9, 140, 42));
+        btnColaLlenado.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnColaLlenado.setText("Cola de llenado");
+        btnColaLlenado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColaLlenado(evt);
+            }
+        });
+        jPanel2.add(btnColaLlenado, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 9, 140, 42));
 
-        jButton4.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton4.setText("Rechazados");
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 9, 140, 42));
+        btnRechazados.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnRechazados.setText("Rechazados");
+        btnRechazados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRechazados(evt);
+            }
+        });
+        jPanel2.add(btnRechazados, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 9, 140, 42));
 
-        jButton5.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton5.setText("Historial");
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 9, 140, 42));
+        btnHistorial.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnHistorial.setText("Historial");
+        btnHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistorial(evt);
+            }
+        });
+        jPanel2.add(btnHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 9, 140, 42));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -101,15 +130,45 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegistrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar
+        // TODO add your handling code here:
+        miControladorVistas.mostrarPanelRegistrarPedido();
+    }//GEN-LAST:event_btnRegistrar
+
+    private void btnColaEspera(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColaEspera
+        // TODO add your handling code here:
+        miControladorVistas.mostrarPanelColaEspera();
+    }//GEN-LAST:event_btnColaEspera
+
+    private void btnColaLlenado(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColaLlenado
+        // TODO add your handling code here:
+        miControladorVistas.mostrarPanelColaLlenado();
+    }//GEN-LAST:event_btnColaLlenado
+
+    private void btnRechazados(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRechazados
+        // TODO add your handling code here:
+        miControladorVistas.mostrarPanelPedidosRechazados();
+    }//GEN-LAST:event_btnRechazados
+
+    private void btnHistorial(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorial
+        // TODO add your handling code here:
+        miControladorVistas.mostrarPanelHistorialPedidos();
+    }//GEN-LAST:event_btnHistorial
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnColaEspera;
+    private javax.swing.JButton btnColaLlenado;
+    private javax.swing.JButton btnHistorial;
+    private javax.swing.JButton btnRechazados;
+    private javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
+
+    // Enlace a controlador vistas
+    public void setControladorVistas(ControladorVistas miControladorVistas) {
+        this.miControladorVistas = miControladorVistas;
+    }
 }

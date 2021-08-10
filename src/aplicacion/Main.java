@@ -5,6 +5,7 @@
  */
 package aplicacion;
 
+import controlador.ControladorVistas;
 import javax.swing.UIManager;
 import vista.PanelColaEspera;
 import vista.PanelColaLlenado;
@@ -31,6 +32,28 @@ public class Main {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             System.out.println(ex.getMessage());
         }
+
+        // Instancia ventana principal
+        VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
+
+        // Instancias de paneles
+        PanelRegistrarPedido miPanelRegistrarPedido = new PanelRegistrarPedido();
+        PanelColaEspera miPanelColaEspera = new PanelColaEspera();
+        PanelColaLlenado miPanelColaLlenado = new PanelColaLlenado();
+        PanelPedidosRechazados miPanelPedidosRechazados = new PanelPedidosRechazados();
+        PanelHistorialPedidos miPanelHistorialPedidos = new PanelHistorialPedidos();
+
+        // Conectando controlador vistas a vistas (ventana, paneles)
+        ControladorVistas miControladorVistas = new ControladorVistas();
+        miControladorVistas.setVentanaPrincipal(miVentanaPrincipal);
+        miControladorVistas.setPanelRegistrarPedido(miPanelRegistrarPedido);
+        miControladorVistas.setPanelColaEspera(miPanelColaEspera);
+        miControladorVistas.setPanelColaLlenado(miPanelColaLlenado);
+        miControladorVistas.setPanelPedidosRechazados(miPanelPedidosRechazados);
+        miControladorVistas.setPanelHistorialPedidos(miPanelHistorialPedidos);
+
+        // Conectando ventana principal a controlador vistas
+        miVentanaPrincipal.setControladorVistas(miControladorVistas);
     }
 
 }
