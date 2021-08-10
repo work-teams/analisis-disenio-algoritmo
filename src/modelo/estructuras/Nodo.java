@@ -5,12 +5,20 @@
  */
 package modelo.estructuras;
 
+import modelo.objetos.Pedido;
+
 /**
  *
  * @author krypt97
  */
-public interface ColaPrioridad {
+public class Nodo {
 
-    // Métodos a implementar
-    public void ordenarPrioridad();
+    // Atributos de clase
+    Pedido pedido;
+    Nodo siguiente;
+
+    // Constructor
+    public Nodo(Pedido miPedido) {
+        this.pedido = miPedido;
+    }
 }

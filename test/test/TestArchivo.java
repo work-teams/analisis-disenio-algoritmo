@@ -48,7 +48,7 @@ public class TestArchivo {
         LinkedList<Pedido> misPedidosRecuperados;
         misPedidosRecuperados = Archivo.recuperarDatosDeArchivo();
         while (!misPedidosRecuperados.isEmpty()) {
-            System.out.println(misPedidosRecuperados.getFirst().getMiCliente().getNombre());
+            System.out.println(misPedidosRecuperados.getFirst().getCliente().getNombre());
             misPedidosRecuperados.removeFirst();
         }
     }

@@ -13,10 +13,12 @@ import modelo.objetos.Pedido;
  */
 public interface Cola {
 
-    // METODOS A IMPLEMENTAR
+    // Métodos a implementar
     public void encolar(Pedido miPedido);
 
     public void desencolar();
 
     public Pedido obtener();
+
+    public int getTamanio();
 }
