@@ -16,68 +16,58 @@ import java.util.Date;
 public class Pedido implements Serializable {
 
     // ATRIBUTOS DE CLASE
-    private int id_pedido;
-    private Date fecha_pedido;
-    private Cliente miCliente;
-    private ArrayList<BalonOxigeno> miBalonOxigeno;
-    private boolean valido = false;
-    private boolean despachado = false;
+    private int id;
+    private Date fecha;
+    private Cliente cliente;
+    private ArrayList<BalonOxigeno> balones;
+    private int estado = 1; // 1=ColaEspera, 2=ColaLlenado, 3=Rechazados, 4=EliminadoLogico
 
     // CONSTRUCTOR
-    public Pedido(int id_pedido, Date fecha_pedido, Cliente miCliente, ArrayList<BalonOxigeno> miBalonOxigeno) {
-        this.id_pedido = id_pedido;
-        this.fecha_pedido = fecha_pedido;
-        this.miCliente = miCliente;
-        this.miBalonOxigeno = miBalonOxigeno;
+    public Pedido(int id, Date fecha, Cliente cliente, ArrayList<BalonOxigeno> balones) {
+        this.id = id;
+        this.fecha = fecha;
+        this.cliente = cliente;
+        this.balones = balones;
     }
 
     // GETTERS Y SETTERS
-    public int getId_pedido() {
-        return id_pedido;
+    public int getId() {
+        return id;
     }
 
-    public void setId_pedido(int id_pedido) {
-        this.id_pedido = id_pedido;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Date getFecha_pedido() {
-        return fecha_pedido;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setFecha_pedido(Date fecha_pedido) {
-        this.fecha_pedido = fecha_pedido;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public Cliente getMiCliente() {
-        return miCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setMiCliente(Cliente miCliente) {
-        this.miCliente = miCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public ArrayList<BalonOxigeno> getMiBalonOxigeno() {
-        return miBalonOxigeno;
+    public ArrayList<BalonOxigeno> getBalones() {
+        return balones;
     }
 
-    public void setMiBalonOxigeno(ArrayList<BalonOxigeno> miBalonOxigeno) {
-        this.miBalonOxigeno = miBalonOxigeno;
+    public void setBalones(ArrayList<BalonOxigeno> balones) {
+        this.balones = balones;
     }
 
-    public boolean isValido() {
-        return valido;
+    public int getEstado() {
+        return estado;
     }
 
-    public void setValido(boolean valido) {
-        this.valido = valido;
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
-
-    public boolean isDespachado() {
-        return despachado;
-    }
-
-    public void setDespachado(boolean despachado) {
-        this.despachado = despachado;
-    }
-
 }

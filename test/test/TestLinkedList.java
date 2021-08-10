@@ -5,10 +5,8 @@
  */
 package test;
 
-import modelo.estructuras.ColaDeEspera;
-import modelo.estructuras.ColaDeLlenado;
+import java.util.LinkedList;
 import modelo.estructuras.Lista;
-import modelo.objetos.BalonOxigeno;
 import modelo.objetos.Cliente;
 import modelo.objetos.Pedido;
 
@@ -16,21 +14,18 @@ import modelo.objetos.Pedido;
  *
  * @author krypt97
  */
-public class TestColas {
+public class TestLinkedList {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ColaDeLlenado miColaDeLlenado = new ColaDeLlenado();
-        ColaDeEspera miColaDeEspera = new ColaDeEspera();
-        ColaDeEspera miColaDeRechazados = new ColaDeEspera();
-        Lista miLista = new Lista(miColaDeEspera, miColaDeLlenado, miColaDeRechazados);
+        Lista miLista = new Lista();
 
         Cliente miCliente1 = new Cliente("111", "111", "111", 3);
         Cliente miCliente2 = new Cliente("222", "222", "222", 2);
-        Cliente miCliente3 = new Cliente("333", "333", "333", 2);
+        Cliente miCliente3 = new Cliente("333", "333", "333", 1);
         Cliente miCliente4 = new Cliente("444", "444", "444", 1);
         Cliente miCliente5 = new Cliente("555", "555", "555", 2);
         Cliente miCliente6 = new Cliente("666", "666", "666", 3);
@@ -49,18 +44,12 @@ public class TestColas {
         miLista.agregarPedido(miPedido5);
         miLista.agregarPedido(miPedido6);
 
-        // 1=(Por defecto)Espera , 2=Llenado, 3=Rechazado , 4=EliminadoLogico
-        miLista.modificarEstado(2, 2);
-        miLista.modificarEstado(3, 2);
-        miLista.modificarEstado(4, 3);
-        miLista.modificarEstado(5, 3);
+        miLista.recorrerLista();
+        System.out.println("modificando");
+
         miLista.modificarEstado(6, 4);
 
-        miLista.rellenarColas();
-        
-        System.out.println(miColaDeEspera.getTamanio()); // Muestra cantidad de pedidos en espera
-        System.out.println(miColaDeLlenado.getTamanio()); // Muestra cantidad de pedidos por llenar
-        System.out.println(miColaDeRechazados.getTamanio()); // Muestra cantidad de pedidos rechazados
-        System.out.println(miLista.getTamanio()); // Muestra cantidad total de pedidos (Historial)
+        miLista.recorrerLista();
     }
+
 }

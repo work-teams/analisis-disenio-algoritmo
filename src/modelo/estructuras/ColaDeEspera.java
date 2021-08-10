@@ -22,7 +22,7 @@ public class ColaDeEspera extends ColaDeLlenado implements ColaPrioridad {
             while (actual.siguiente != null) {
                 nodoSiguiente = actual.siguiente;
                 while (nodoSiguiente != null) {
-                    if (actual.pedido.getMiCliente().getEstado_paciente() > nodoSiguiente.pedido.getMiCliente().getEstado_paciente()) {
+                    if (actual.pedido.getCliente().getEstadoPaciente() > nodoSiguiente.pedido.getCliente().getEstadoPaciente()) {
                         aux = actual.pedido;
                         actual.pedido = nodoSiguiente.pedido;
                         nodoSiguiente.pedido = aux;

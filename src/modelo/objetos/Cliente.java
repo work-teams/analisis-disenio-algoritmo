@@ -17,14 +17,14 @@ public class Cliente implements Serializable {
     private String dni;
     private String nombre;
     private String apellido;
-    private int estado_paciente; // 0=GRAVE, 1=MODERADO, 2=LEVE
+    private int estadoPaciente; // 1=Grave, 2=Moderado, 3=Leve
 
     // CONSTRUCTOR
-    public Cliente(String dni, String nombre, String apellido, int estado_paciente) {
+    public Cliente(String dni, String nombre, String apellido, int estadoPaciente) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.estado_paciente = estado_paciente;
+        this.estadoPaciente = estadoPaciente;
     }
 
     // SETTERS AND GETTERS
@@ -52,17 +52,17 @@ public class Cliente implements Serializable {
         this.apellido = apellido;
     }
 
-    public int getEstado_paciente() {
-        return estado_paciente;
+    public int getEstadoPaciente() {
+        return estadoPaciente;
     }
 
-    public void setEstado_paciente(int estado_paciente) {
-        this.estado_paciente = estado_paciente;
+    public void setEstadoPaciente(int estadoPaciente) {
+        this.estadoPaciente = estadoPaciente;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", estado_paciente=" + estado_paciente + '}';
+        return "Cliente{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", estado_paciente=" + estadoPaciente + '}';
     }
 
 }
