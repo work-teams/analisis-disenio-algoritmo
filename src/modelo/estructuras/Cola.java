@@ -5,6 +5,7 @@
  */
 package modelo.estructuras;
 
+import java.util.LinkedList;
 import modelo.objetos.Pedido;
 
 /**
@@ -21,4 +22,6 @@ public interface Cola {
     public Pedido obtener();
 
     public int getTamanio();
+    
+    public LinkedList<Pedido> getCola();
 }

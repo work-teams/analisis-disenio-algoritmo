@@ -5,6 +5,7 @@
  */
 package modelo.estructuras;
 
+import java.util.LinkedList;
 import modelo.objetos.Pedido;
 
 /**
@@ -55,6 +56,17 @@ public class ColaDeLlenado implements Cola {
     @Override
     public int getTamanio() {
         return tamanio;
+    }
+
+    @Override
+    public LinkedList<Pedido> getCola() {
+        LinkedList<Pedido> misPedidos = new LinkedList<>();
+        Nodo actual = cabeza;
+        while (actual != null) {
+            misPedidos.add(actual.pedido);
+            actual = actual.siguiente;
+        }
+        return misPedidos;
     }
 
 }

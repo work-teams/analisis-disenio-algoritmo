@@ -5,10 +5,11 @@
  */
 package test;
 
+import java.util.Date;
+import java.util.LinkedList;
 import modelo.estructuras.ColaDeEspera;
 import modelo.estructuras.ColaDeLlenado;
 import modelo.estructuras.Lista;
-import modelo.objetos.BalonOxigeno;
 import modelo.objetos.Cliente;
 import modelo.objetos.Pedido;
 
@@ -26,7 +27,11 @@ public class TestColas {
         ColaDeLlenado miColaDeLlenado = new ColaDeLlenado();
         ColaDeEspera miColaDeEspera = new ColaDeEspera();
         ColaDeEspera miColaDeRechazados = new ColaDeEspera();
-        Lista miLista = new Lista(miColaDeEspera, miColaDeLlenado, miColaDeRechazados);
+        Lista miLista = new Lista();
+        
+        miLista.setColaDeEspera(miColaDeEspera);
+        miLista.setColaDeLlenado(miColaDeLlenado);
+        miLista.setColaDeRechazados(miColaDeRechazados);
 
         Cliente miCliente1 = new Cliente("111", "111", "111", 3);
         Cliente miCliente2 = new Cliente("222", "222", "222", 2);
@@ -35,12 +40,12 @@ public class TestColas {
         Cliente miCliente5 = new Cliente("555", "555", "555", 2);
         Cliente miCliente6 = new Cliente("666", "666", "666", 3);
 
-        Pedido miPedido1 = new Pedido(1, null, miCliente1, null);
-        Pedido miPedido2 = new Pedido(2, null, miCliente2, null);
-        Pedido miPedido3 = new Pedido(3, null, miCliente3, null);
-        Pedido miPedido4 = new Pedido(4, null, miCliente4, null);
-        Pedido miPedido5 = new Pedido(5, null, miCliente5, null);
-        Pedido miPedido6 = new Pedido(6, null, miCliente6, null);
+        Pedido miPedido1 = new Pedido(1, new Date(), miCliente1, null);
+        Pedido miPedido2 = new Pedido(2, new Date(), miCliente2, null);
+        Pedido miPedido3 = new Pedido(3, new Date(), miCliente3, null);
+        Pedido miPedido4 = new Pedido(4, new Date(), miCliente4, null);
+        Pedido miPedido5 = new Pedido(5, new Date(), miCliente5, null);
+        Pedido miPedido6 = new Pedido(6, new Date(), miCliente6, null);
 
         miLista.agregarPedido(miPedido1);
         miLista.agregarPedido(miPedido2);
@@ -56,11 +61,16 @@ public class TestColas {
         miLista.modificarEstado(5, 3);
         miLista.modificarEstado(6, 4);
 
-        miLista.rellenarColas();
+        miColaDeEspera.ordenarPrioridad();
         
-        System.out.println(miColaDeEspera.getTamanio()); // Muestra cantidad de pedidos en espera
-        System.out.println(miColaDeLlenado.getTamanio()); // Muestra cantidad de pedidos por llenar
-        System.out.println(miColaDeRechazados.getTamanio()); // Muestra cantidad de pedidos rechazados
-        System.out.println(miLista.getTamanio()); // Muestra cantidad total de pedidos (Historial)
+        LinkedList<Pedido> miList = miColaDeEspera.getCola();
+        while (!miList.isEmpty()) {
+            System.out.println(miList.pop().getCliente().getEstadoPaciente());
+        }
+        
+        System.out.println("Cola de espera "+miColaDeEspera.getTamanio()); // Muestra cantidad de pedidos en espera
+        System.out.println("Cola de llenado "+miColaDeLlenado.getTamanio()); // Muestra cantidad de pedidos por llenar
+        System.out.println("Cola de rechazados "+miColaDeRechazados.getTamanio()); // Muestra cantidad de pedidos rechazados
+        System.out.println("Total historial pedidos "+miLista.getTamanio()); // Muestra cantidad total de pedidos (Historial)
     }
 }

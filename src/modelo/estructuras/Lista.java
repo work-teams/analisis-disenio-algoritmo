@@ -24,14 +24,19 @@ public class Lista {
     private ColaDeLlenado miColaDeLlenado;
     private ColaDeEspera miColaDeRechazados;
 
-    // Constructor
-    public Lista(ColaDeEspera miColaDeEspera, ColaDeLlenado miColaDeLlenado, ColaDeEspera miColaDeRechazados) {
+    // Enlace cola de espera
+    public void setColaDeEspera(ColaDeEspera miColaDeEspera) {
         this.miColaDeEspera = miColaDeEspera;
-        this.miColaDeLlenado = miColaDeLlenado;
-        this.miColaDeRechazados = miColaDeRechazados;
     }
 
-    public Lista() {
+    // Enlace cola de llenado
+    public void setColaDeLlenado(ColaDeLlenado miColaDeLlenado) {
+        this.miColaDeLlenado = miColaDeLlenado;
+    }
+
+    // Enlace cola de rechazados
+    public void setColaDeRechazados(ColaDeEspera miColaDeRechazados) {
+        this.miColaDeRechazados = miColaDeRechazados;
     }
 
     // Métodos de clase
@@ -44,9 +49,50 @@ public class Lista {
         }
         ultimo = nuevoNodo;
         tamanio++;
+
+        // Inserta en su respectiva cola segun estado del pedido
+        switch (miPedido.getEstado()) {
+            case 1:
+                miColaDeEspera.encolar(miPedido);
+                break;
+            case 2:
+                miColaDeLlenado.encolar(miPedido);
+                break;
+            case 3:
+                miColaDeRechazados.encolar(miPedido);
+                break;
+        }
     }
 
-    public LinkedList<Pedido> obtenerLista() {
+    public void modificarEstado(int idPedido, int nuevoEstado) {
+        // Busca pedido y modifica el estado
+        if (cabeza != null) {
+            Nodo actual = cabeza;
+            while (actual.pedido.getId() != idPedido) {
+                actual = actual.siguiente;
+            }
+            actual.pedido.setEstado(nuevoEstado);
+
+            // Inserta en su respectiva cola segun nuevo estado
+            switch (nuevoEstado) {
+                case 1:
+                    miColaDeEspera.encolar(actual.pedido);
+                    break;
+                case 2:
+                    miColaDeLlenado.encolar(actual.pedido);
+                    break;
+                case 3:
+                    miColaDeRechazados.encolar(actual.pedido);
+                    break;
+            }
+        }
+    }
+
+    public int getTamanio() {
+        return tamanio;
+    }
+
+    public LinkedList<Pedido> getListaEnlazada() {
         LinkedList<Pedido> misPedidos = new LinkedList<>();
         Nodo actual = cabeza;
         while (actual != null) {
@@ -56,47 +102,25 @@ public class Lista {
         return misPedidos;
     }
 
-    public void recorrerLista() { // Método de prueba
-        Nodo actual = cabeza;
-        while (actual != null) {
-            System.out.println(actual.pedido.getEstado());
-            actual = actual.siguiente;
-        }
-    }
-
-    public int getTamanio() {
-        return tamanio;
-    }
-
-    public void modificarEstado(int idPedido, int nuevoEstado) {
-        // Siempre existe el elemento a modificar
-        if (cabeza != null) {
-            Nodo actual = cabeza;
-            while (actual.pedido.getId() != idPedido) {
-                actual = actual.siguiente;
-            }
-            actual.pedido.setEstado(nuevoEstado);
-        }
-    }
-
-    public void rellenarColas() {
-        if (cabeza != null) {
-            Nodo actual = cabeza;
-            while (actual != null) {
-                switch (actual.pedido.getEstado()) {
-                    case 1:
-                        miColaDeEspera.encolar(actual.pedido);
-                        break;
-                    case 2:
-                        miColaDeLlenado.encolar(actual.pedido);
-                        break;
-                    case 3:
-                        miColaDeRechazados.encolar(actual.pedido);
-                }
-                actual = actual.siguiente;
-            }
-            miColaDeEspera.ordenarPrioridad();
-            miColaDeRechazados.ordenarPrioridad();
-        }
-    }
+//    public void rellenarColas() {
+//        if (cabeza != null) {
+//            Nodo actual = cabeza;
+//            while (actual != null) {
+//                switch (actual.pedido.getEstado()) {
+//                    case 1:
+//                        miColaDeEspera.encolar(actual.pedido);
+//                        break;
+//                    case 2:
+//                        miColaDeLlenado.encolar(actual.pedido);
+//                        break;
+//                    case 3:
+//                        miColaDeRechazados.encolar(actual.pedido);
+//                        break;
+//                }
+//                actual = actual.siguiente;
+//            }
+//            miColaDeEspera.ordenarPrioridad();
+//            miColaDeRechazados.ordenarPrioridad();
+//        }
+//    }
 }
