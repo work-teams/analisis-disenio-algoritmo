@@ -7,6 +7,9 @@ package aplicacion;
 
 import controlador.ControladorVistas;
 import javax.swing.UIManager;
+import modelo.estructuras.ColaDeEspera;
+import modelo.estructuras.ColaDeLlenado;
+import modelo.estructuras.Lista;
 import vista.PanelColaEspera;
 import vista.PanelColaLlenado;
 import vista.PanelHistorialPedidos;
@@ -54,6 +57,22 @@ public class Main {
 
         // Conectando ventana principal a controlador vistas
         miVentanaPrincipal.setControladorVistas(miControladorVistas);
+        
+        // Instancia de colas
+        ColaDeEspera miColaDeEspera = new ColaDeEspera();
+        ColaDeLlenado miColaDeLlenado = new ColaDeLlenado();
+        ColaDeEspera miColaDeRechazados = new ColaDeEspera();
+        
+        // Instancia de lista enlanzada
+        Lista miLista = new Lista();
+
+        // Conectando lista enlazada con colas
+        miLista.setColaDeEspera(miColaDeEspera);
+        miLista.setColaDeLlenado(miColaDeLlenado);
+        miLista.setColaDeRechazados(miColaDeRechazados);
+        
+        // Conectando panele registrar pedido a lista enlazada
+        miPanelRegistrarPedido.setListaEnlazada(miLista);
     }
 
 }
