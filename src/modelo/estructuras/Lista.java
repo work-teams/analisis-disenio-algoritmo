@@ -54,26 +54,37 @@ public class Lista {
         switch (miPedido.getEstado()) {
             case 1:
                 miColaDeEspera.encolar(miPedido);
-                miColaDeEspera.ordenarPrioridad();
                 break;
             case 2:
                 miColaDeLlenado.encolar(miPedido);
                 break;
             case 3:
                 miColaDeRechazados.encolar(miPedido);
-                miColaDeRechazados.ordenarPrioridad();
                 break;
         }
     }
 
     public void modificarEstado(int idPedido, int nuevoEstado) {
-        // Siempre existe el elemento a modificar
+        // Busca pedido y modifica el estado
         if (cabeza != null) {
             Nodo actual = cabeza;
             while (actual.pedido.getId() != idPedido) {
                 actual = actual.siguiente;
             }
             actual.pedido.setEstado(nuevoEstado);
+
+            // Inserta en su respectiva cola segun nuevo estado
+            switch (nuevoEstado) {
+                case 1:
+                    miColaDeEspera.encolar(actual.pedido);
+                    break;
+                case 2:
+                    miColaDeLlenado.encolar(actual.pedido);
+                    break;
+                case 3:
+                    miColaDeRechazados.encolar(actual.pedido);
+                    break;
+            }
         }
     }
 
@@ -91,25 +102,25 @@ public class Lista {
         return misPedidos;
     }
 
-    public void rellenarColas() {
-        if (cabeza != null) {
-            Nodo actual = cabeza;
-            while (actual != null) {
-                switch (actual.pedido.getEstado()) {
-                    case 1:
-                        miColaDeEspera.encolar(actual.pedido);
-                        break;
-                    case 2:
-                        miColaDeLlenado.encolar(actual.pedido);
-                        break;
-                    case 3:
-                        miColaDeRechazados.encolar(actual.pedido);
-                        break;
-                }
-                actual = actual.siguiente;
-            }
-            miColaDeEspera.ordenarPrioridad();
-            miColaDeRechazados.ordenarPrioridad();
-        }
-    }
+//    public void rellenarColas() {
+//        if (cabeza != null) {
+//            Nodo actual = cabeza;
+//            while (actual != null) {
+//                switch (actual.pedido.getEstado()) {
+//                    case 1:
+//                        miColaDeEspera.encolar(actual.pedido);
+//                        break;
+//                    case 2:
+//                        miColaDeLlenado.encolar(actual.pedido);
+//                        break;
+//                    case 3:
+//                        miColaDeRechazados.encolar(actual.pedido);
+//                        break;
+//                }
+//                actual = actual.siguiente;
+//            }
+//            miColaDeEspera.ordenarPrioridad();
+//            miColaDeRechazados.ordenarPrioridad();
+//        }
+//    }
 }
