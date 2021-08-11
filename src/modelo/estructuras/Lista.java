@@ -24,14 +24,19 @@ public class Lista {
     private ColaDeLlenado miColaDeLlenado;
     private ColaDeEspera miColaDeRechazados;
 
-    // Constructor
-    public Lista(ColaDeEspera miColaDeEspera, ColaDeLlenado miColaDeLlenado, ColaDeEspera miColaDeRechazados) {
+    // Enlace cola de espera
+    public void setColaDeEspera(ColaDeEspera miColaDeEspera) {
         this.miColaDeEspera = miColaDeEspera;
-        this.miColaDeLlenado = miColaDeLlenado;
-        this.miColaDeRechazados = miColaDeRechazados;
     }
 
-    public Lista() {
+    // Enlace cola de llenado
+    public void setColaDeLlenado(ColaDeLlenado miColaDeLlenado) {
+        this.miColaDeLlenado = miColaDeLlenado;
+    }
+
+    // Enlace cola de rechazados
+    public void setColaDeRechazados(ColaDeEspera miColaDeRechazados) {
+        this.miColaDeRechazados = miColaDeRechazados;
     }
 
     // Métodos de clase
@@ -44,28 +49,21 @@ public class Lista {
         }
         ultimo = nuevoNodo;
         tamanio++;
-    }
 
-    public LinkedList<Pedido> obtenerLista() {
-        LinkedList<Pedido> misPedidos = new LinkedList<>();
-        Nodo actual = cabeza;
-        while (actual != null) {
-            misPedidos.add(actual.pedido);
-            actual = actual.siguiente;
+        // Inserta en su respectiva cola segun estado del pedido
+        switch (miPedido.getEstado()) {
+            case 1:
+                miColaDeEspera.encolar(miPedido);
+                miColaDeEspera.ordenarPrioridad();
+                break;
+            case 2:
+                miColaDeLlenado.encolar(miPedido);
+                break;
+            case 3:
+                miColaDeRechazados.encolar(miPedido);
+                miColaDeRechazados.ordenarPrioridad();
+                break;
         }
-        return misPedidos;
-    }
-
-    public void recorrerLista() { // Método de prueba
-        Nodo actual = cabeza;
-        while (actual != null) {
-            System.out.println(actual.pedido.getEstado());
-            actual = actual.siguiente;
-        }
-    }
-
-    public int getTamanio() {
-        return tamanio;
     }
 
     public void modificarEstado(int idPedido, int nuevoEstado) {
@@ -77,6 +75,20 @@ public class Lista {
             }
             actual.pedido.setEstado(nuevoEstado);
         }
+    }
+
+    public int getTamanio() {
+        return tamanio;
+    }
+
+    public LinkedList<Pedido> getListaEnlazada() {
+        LinkedList<Pedido> misPedidos = new LinkedList<>();
+        Nodo actual = cabeza;
+        while (actual != null) {
+            misPedidos.add(actual.pedido);
+            actual = actual.siguiente;
+        }
+        return misPedidos;
     }
 
     public void rellenarColas() {
@@ -92,6 +104,7 @@ public class Lista {
                         break;
                     case 3:
                         miColaDeRechazados.encolar(actual.pedido);
+                        break;
                 }
                 actual = actual.siguiente;
             }
