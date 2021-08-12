@@ -73,6 +73,9 @@ public class Main {
         
         // Conectando controlador a cola de espera
         miControladorVistas.setColaDeEspera(miColaDeEspera);
+        
+        // Conectando cotrolador a cola de llenado
+        miControladorVistas.setColaDeLlenado(miColaDeLlenado);
 
         // Conectando panel registrar pedido a lista enlazada
         miPanelRegistrarPedido.setListaEnlazada(miLista);
@@ -82,6 +85,12 @@ public class Main {
         
         // Conectando panel cola de espera a cola de espera
         miPanelColaEspera.setColaDeEspera(miColaDeEspera);
+        
+        // Conectando panel cola de llenado
+        miPanelColaLlenado.setColaDeLlenado(miColaDeLlenado);
+        
+        // Conectando panel cola de llenado a lista enlazada
+        miPanelColaLlenado.setListaEnlazada(miLista);
     }
 
 }

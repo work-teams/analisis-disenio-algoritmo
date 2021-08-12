@@ -6,6 +6,7 @@
 package controlador;
 
 import modelo.estructuras.ColaDeEspera;
+import modelo.estructuras.ColaDeLlenado;
 import vista.PanelColaEspera;
 import vista.PanelColaLlenado;
 import vista.PanelHistorialPedidos;
@@ -27,6 +28,7 @@ public class ControladorVistas {
     private PanelPedidosRechazados miPanelPedidosRechazados;
     private PanelHistorialPedidos miPanelHistorialPedidos;
     private ColaDeEspera miColaDeEspera;
+    private ColaDeLlenado miColaDeLlenado;
 
     // Enlace a ventana principal
     public void setVentanaPrincipal(VentanaPrincipal miVentanaPrincipal) {
@@ -80,6 +82,11 @@ public class ControladorVistas {
     public void setColaDeEspera(ColaDeEspera miColaDeEspera) {
         this.miColaDeEspera = miColaDeEspera;
     }
+    
+    // Enlace a cola de llenado
+    public void setColaDeLlenado(ColaDeLlenado miColaDeLlenado) {
+       this.miColaDeLlenado = miColaDeLlenado;
+    }
 
     // Métodos de clase controlador
     public void mostrarPanelRegistrarPedido() {
@@ -116,6 +123,13 @@ public class ControladorVistas {
         this.miPanelHistorialPedidos.setVisible(false);
 
         this.miPanelColaLlenado.setVisible(true);
+        
+        // Si la cola no está vacia, carga las tablas
+        if (miColaDeLlenado.obtener() != null) {
+            this.miPanelColaLlenado.setTblColaLlenado(miColaDeLlenado.getCola());
+            this.miPanelColaLlenado.setFormularioCliente(miColaDeLlenado.obtener());
+            this.miPanelColaLlenado.setTblBalonesOxigeno(miColaDeLlenado.obtener().getBalones());
+        }
     }
 
     public void mostrarPanelPedidosRechazados() {
