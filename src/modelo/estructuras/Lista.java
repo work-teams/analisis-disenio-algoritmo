@@ -101,10 +101,23 @@ public class Lista {
         return pedidoBuscado;
     }
 
+    public void modificarPedidoPorID(int idPedido, Pedido pedidoModificado) {
+        // Busca pedido en posición dada y lo modifica
+        if (cabeza != null) {
+            Nodo actual = cabeza;
+            while (actual.pedido.getId() != idPedido) {
+                actual = actual.siguiente;
+            }
+            actual.pedido = pedidoModificado;
+            // Una vez modificado lo encola en la lista de espera
+            miColaDeEspera.encolar(pedidoModificado);
+        }
+    }
+
     public int getTamanio() {
         return tamanio;
     }
-    
+
     public boolean isEmpty() {
         // Retorna true si cabeza es nulo caso contrario false.
         return cabeza == null;

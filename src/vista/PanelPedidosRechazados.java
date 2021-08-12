@@ -5,11 +5,33 @@
  */
 package vista;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
+import javax.swing.table.DefaultTableModel;
+import modelo.estructuras.ColaDeEspera;
+import modelo.estructuras.Lista;
+import modelo.objetos.BalonOxigeno;
+import modelo.objetos.Cliente;
+import modelo.objetos.Pedido;
+
 /**
  *
  * @author krypt97
  */
 public class PanelPedidosRechazados extends javax.swing.JPanel {
+
+    // Atributos de clase
+    public int idPedido;
+    private Cliente clienteModificado;
+    private Pedido pedidoModificado;
+    private BalonOxigeno miBalonOxigenoModificado;
+    public ArrayList<BalonOxigeno> misBalonesOxigeno;
+    private DefaultTableModel miDefaultTableModel;
+
+    // Atributos a conectar
+    private Lista miLista;
+    private ColaDeEspera miColaDeRechazados;
 
     /**
      * Creates new form PanelRegistrarPedido
@@ -29,50 +51,47 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
 
         jPanel0 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblColaRechazados = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtDni = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        cmbBoxEstado = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
+        txtCapacidad = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblBalonesOxigeno = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnModificarBalon = new javax.swing.JButton();
+        btnEliminarBalon = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnModificarPedido = new javax.swing.JButton();
+        btnEliminarPedido = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel0.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pedidos rechazados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
         jPanel0.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblColaRechazados.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        tblColaRechazados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Date"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblColaRechazados);
 
         jPanel0.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 18, 780, 181));
 
@@ -97,18 +116,18 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
         jLabel4.setText("Apellido del cliente :");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 109, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 358, 34));
+        txtDni.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jPanel1.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 358, 34));
 
-        jTextField3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 136, 358, 34));
+        txtNombre.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 136, 358, 34));
 
-        jTextField4.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 136, 358, 34));
+        txtApellido.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 136, 358, 34));
 
-        jComboBox1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 44, 358, 34));
+        cmbBoxEstado.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        cmbBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grave", "Moderado", "Leve" }));
+        jPanel1.add(cmbBoxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 44, 358, 34));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 209, 800, 191));
 
@@ -124,30 +143,32 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
         jLabel6.setText("Capacidad del balón (m3) :");
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 17, -1, -1));
 
-        jTextField5.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jPanel4.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 358, 34));
+        txtCodigo.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jPanel4.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 358, 34));
 
-        jTextField6.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jPanel4.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 44, 358, 34));
+        txtCapacidad.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jPanel4.add(txtCapacidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 44, 358, 34));
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 98));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Balones de oxígeno", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblBalonesOxigeno.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        tblBalonesOxigeno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código", "Capacidad"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblBalonesOxigeno.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tblBalonesOxigenoFocusGained(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblBalonesOxigeno);
 
         jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 780, 140));
 
@@ -156,13 +177,23 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton1.setText("Modificar balón de oxígeno");
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 10, 280, 36));
+        btnModificarBalon.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnModificarBalon.setText("Modificar balón de oxígeno");
+        btnModificarBalon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarBalonActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnModificarBalon, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 10, 280, 36));
 
-        jButton2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton2.setText("Eliminar balón de oxígeno");
-        jPanel6.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 10, 280, 36));
+        btnEliminarBalon.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnEliminarBalon.setText("Eliminar balón de oxígeno");
+        btnEliminarBalon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarBalonActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnEliminarBalon, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 10, 280, 36));
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 268, 800, 56));
 
@@ -170,24 +201,123 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton3.setText("Modificar pedido");
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 10, 280, 36));
+        btnModificarPedido.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnModificarPedido.setText("Modificar pedido");
+        btnModificarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarPedidoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnModificarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 10, 280, 36));
 
-        jButton4.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton4.setText("Eliminar pedido");
-        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 10, 280, 36));
+        btnEliminarPedido.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnEliminarPedido.setText("Eliminar pedido");
+        btnEliminarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPedidoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnEliminarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 10, 280, 36));
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 724, 800, 56));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnModificarBalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarBalonActionPerformed
+        // TODO add your handling code here:
+        // Si seleccionó una fila, modifica el balón, sino agrega un nuevo balón
+        miBalonOxigenoModificado = new BalonOxigeno(txtCodigo.getText(), Float.parseFloat(txtCapacidad.getText()));
+        if (tblBalonesOxigeno.getSelectedRow() != -1) {
+            misBalonesOxigeno.set(tblBalonesOxigeno.getSelectedRow(), miBalonOxigenoModificado);
+            setTblBalonesOxigeno(misBalonesOxigeno);
+            txtCodigo.setText("");
+            txtCapacidad.setText("");
+        } else {
+            misBalonesOxigeno.add(tblBalonesOxigeno.getRowCount(), miBalonOxigenoModificado);
+            setTblBalonesOxigeno(misBalonesOxigeno);
+            txtCodigo.setText("");
+            txtCapacidad.setText("");
+        }
+    }//GEN-LAST:event_btnModificarBalonActionPerformed
+
+    private void btnEliminarBalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarBalonActionPerformed
+        // TODO add your handling code here:
+        // Si selecciono una fila de la tabla, lo elimina
+        if (tblBalonesOxigeno.getSelectedRow() != -1) {
+            misBalonesOxigeno.remove(tblBalonesOxigeno.getSelectedRow());
+            setTblBalonesOxigeno(misBalonesOxigeno);
+        }
+    }//GEN-LAST:event_btnEliminarBalonActionPerformed
+
+    private void btnModificarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarPedidoActionPerformed
+        // TODO add your handling code here:
+        // Si la tabla contiene filas, modifica y envía pedido a cola de espera
+        if (tblColaRechazados.getRowCount() != 0) {
+            // Obtiene los nuevos datos del pedido, mateniendo el id original
+            clienteModificado = new Cliente(txtDni.getText(), txtNombre.getText(), txtApellido.getText(), cmbBoxEstado.getSelectedIndex() + 1);
+            pedidoModificado = new Pedido(idPedido, new Date(), clienteModificado, (ArrayList<BalonOxigeno>) misBalonesOxigeno.clone());
+
+            // Modifica el pedido conservando el id en la lista enlazada
+            miLista.modificarPedidoPorID(idPedido, pedidoModificado); // Estado: 1=ColaDeEspera (por defecto en cada nuevo pedido)
+            miColaDeRechazados.desencolar();
+
+            // Si la cola no esta vacia carga las tablas, sino limpia los campos
+            if (miColaDeRechazados.obtener() != null) {
+                setTblColaRechazados(miColaDeRechazados.getCola());
+                setFormularioCliente(miColaDeRechazados.obtener());
+                setTblBalonesOxigeno(miColaDeRechazados.obtener().getBalones());
+            } else {
+                setTblColaRechazados(miColaDeRechazados.getCola());
+                txtDni.setText("");
+                txtNombre.setText("");
+                txtApellido.setText("");
+                cmbBoxEstado.setSelectedIndex(0);
+                txtCodigo.setText("");
+                txtCapacidad.setText("");
+                setTblBalonesOxigeno(new ArrayList<>());
+            }
+        }
+    }//GEN-LAST:event_btnModificarPedidoActionPerformed
+
+    private void btnEliminarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPedidoActionPerformed
+        // TODO add your handling code here:
+        // Si la tabla contiene filas, elimina el pedido
+        if (tblColaRechazados.getRowCount() != 0) {
+            miLista.modificarEstado((Integer) tblColaRechazados.getValueAt(0, 0), 4); // Estado: 4=EliminadoLógico
+            miColaDeRechazados.desencolar();
+
+            // Si la cola no esta vacia carga las tablas, sino limpia los campos
+            if (miColaDeRechazados.obtener() != null) {
+                setTblColaRechazados(miColaDeRechazados.getCola());
+                setFormularioCliente(miColaDeRechazados.obtener());
+                setTblBalonesOxigeno(miColaDeRechazados.obtener().getBalones());
+            } else {
+                setTblColaRechazados(miColaDeRechazados.getCola());
+                txtDni.setText("");
+                txtNombre.setText("");
+                txtApellido.setText("");
+                cmbBoxEstado.setSelectedIndex(0);
+                setTblBalonesOxigeno(new ArrayList<>());
+            }
+        }
+    }//GEN-LAST:event_btnEliminarPedidoActionPerformed
+
+    private void tblBalonesOxigenoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblBalonesOxigenoFocusGained
+        // TODO add your handling code here:
+        // Si la fila seleccionada existe, carga los text field
+        if (tblBalonesOxigeno.getSelectedRow() != -1) {
+            txtCodigo.setText(tblBalonesOxigeno.getValueAt(tblBalonesOxigeno.getSelectedRow(), 0).toString());
+            txtCapacidad.setText(tblBalonesOxigeno.getValueAt(tblBalonesOxigeno.getSelectedRow(), 1).toString());
+            jPanel5.requestFocus();
+        }
+    }//GEN-LAST:event_tblBalonesOxigenoFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnEliminarBalon;
+    private javax.swing.JButton btnEliminarPedido;
+    private javax.swing.JButton btnModificarBalon;
+    private javax.swing.JButton btnModificarPedido;
+    private javax.swing.JComboBox<String> cmbBoxEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -203,12 +333,62 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTable tblBalonesOxigeno;
+    private javax.swing.JTable tblColaRechazados;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCapacidad;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtDni;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    // Enlaze a lista enlazada
+    public void setListaEnlazada(Lista miLista) {
+        this.miLista = miLista;
+    }
+
+    // Enlace a cola de rechazados
+    public void setColaDeRechazados(ColaDeEspera miColaDeRechazados) {
+        this.miColaDeRechazados = miColaDeRechazados;
+    }
+
+    // Métodos auxiliares de clase
+    public void setTblColaRechazados(LinkedList<Pedido> misPedidos) {
+        String[] columnas = {"ID", "Fecha"};
+        Object[][] miData = new Object[misPedidos.size()][2];
+        for (int i = 0; i < misPedidos.size(); i++) {
+            miData[i][0] = misPedidos.get(i).getId();
+            miData[i][1] = misPedidos.get(i).getFecha();
+        }
+        miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tblColaRechazados.setModel(miDefaultTableModel);
+    }
+
+    public void setFormularioCliente(Pedido miPedido) {
+        txtDni.setText(miPedido.getCliente().getDni());
+        txtApellido.setText(miPedido.getCliente().getApellido());
+        txtNombre.setText(miPedido.getCliente().getNombre());
+        switch (miPedido.getCliente().getEstadoPaciente()) {
+            case 1:
+                cmbBoxEstado.setSelectedIndex(0);
+                break;
+            case 2:
+                cmbBoxEstado.setSelectedIndex(1);
+                break;
+            case 3:
+                cmbBoxEstado.setSelectedIndex(2);
+                break;
+        }
+    }
+
+    public void setTblBalonesOxigeno(ArrayList<BalonOxigeno> misBalonesOxigeno) {
+        String[] columnas = {"Código", "Capacidad"};
+        Object[][] miData = new Object[misBalonesOxigeno.size()][2];
+        for (int i = 0; i < misBalonesOxigeno.size(); i++) {
+            miData[i][0] = misBalonesOxigeno.get(i).getCodigo();
+            miData[i][1] = misBalonesOxigeno.get(i).getCapacidad();
+        }
+        miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tblBalonesOxigeno.setModel(miDefaultTableModel);
+    }
 }

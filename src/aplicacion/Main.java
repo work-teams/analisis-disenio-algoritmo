@@ -76,6 +76,9 @@ public class Main {
 
         // Conectando cotrolador a cola de llenado
         miControladorVistas.setColaDeLlenado(miColaDeLlenado);
+        
+        // Conectando controlador a cola de rechazados
+        miControladorVistas.setColaDeRechazados(miColaDeRechazados);
 
         // Conectando cotrolador a lista enlazada
         miControladorVistas.setListaEnlazada(miLista);
@@ -95,6 +98,12 @@ public class Main {
         // Conectando panel cola de llenado a lista enlazada
         miPanelColaLlenado.setListaEnlazada(miLista);
 
+        // Conectando panel pedidos rechazados a lista enlazada
+        miPanelPedidosRechazados.setListaEnlazada(miLista);
+        
+        // Conectando panel pedidos rechazados a cola de rechazados
+        miPanelPedidosRechazados.setColaDeRechazados(miColaDeRechazados);
+        
         // Conectando panel hostorial a lista enlazada
         miPanelHistorialPedidos.setListaEnlazada(miLista);
     }

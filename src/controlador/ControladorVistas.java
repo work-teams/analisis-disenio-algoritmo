@@ -30,6 +30,7 @@ public class ControladorVistas {
     private PanelHistorialPedidos miPanelHistorialPedidos;
     private ColaDeEspera miColaDeEspera;
     private ColaDeLlenado miColaDeLlenado;
+    private ColaDeEspera miColaDeRechazados;
     private Lista miLista;
 
     // Enlace a ventana principal
@@ -89,6 +90,11 @@ public class ControladorVistas {
     public void setColaDeLlenado(ColaDeLlenado miColaDeLlenado) {
        this.miColaDeLlenado = miColaDeLlenado;
     }
+
+    // Enlace a cola de rechazados
+    public void setColaDeRechazados(ColaDeEspera miColaDeRechazados) {
+        this.miColaDeRechazados = miColaDeRechazados;
+    }
     
     // Enlace a lista enlazada
     public void setListaEnlazada(Lista miLista) {
@@ -146,6 +152,20 @@ public class ControladorVistas {
         this.miPanelHistorialPedidos.setVisible(false);
 
         this.miPanelPedidosRechazados.setVisible(true);
+        
+        // Si la cola no esta vacia, carga las tablas
+        if (miColaDeRechazados.obtener() != null) {
+            this.miColaDeRechazados.ordenarPrioridad();
+            this.miPanelPedidosRechazados.setTblColaRechazados(miColaDeRechazados.getCola());
+            this.miPanelPedidosRechazados.setFormularioCliente(miColaDeRechazados.obtener());
+            this.miPanelPedidosRechazados.setTblBalonesOxigeno(miColaDeRechazados.obtener().getBalones());
+            
+            // Guarda el id del pedido en una variable del panel
+            this.miPanelPedidosRechazados.idPedido = miColaDeRechazados.obtener().getId();
+            
+            // Guarda los balones de oxigeno del pedido en una variable del panel para su posterior modificación
+            this.miPanelPedidosRechazados.misBalonesOxigeno = miColaDeRechazados.obtener().getBalones();
+        }
     }
 
     public void mostrarPanelHistorialPedidos() {
