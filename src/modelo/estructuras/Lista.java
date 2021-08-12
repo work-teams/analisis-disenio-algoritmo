@@ -88,8 +88,26 @@ public class Lista {
         }
     }
 
+    public Pedido obtenerPedido(int idPedido) throws NullPointerException {
+        // Busca pedido en posición dada y lo retorna
+        Pedido pedidoBuscado = null;
+        if (cabeza != null) {
+            Nodo actual = cabeza;
+            while (actual.pedido.getId() != idPedido) {
+                actual = actual.siguiente;
+            }
+            pedidoBuscado = actual.pedido;
+        }
+        return pedidoBuscado;
+    }
+
     public int getTamanio() {
         return tamanio;
+    }
+    
+    public boolean isEmpty() {
+        // Retorna true si cabeza es nulo caso contrario false.
+        return cabeza == null;
     }
 
     public LinkedList<Pedido> getListaEnlazada() {
