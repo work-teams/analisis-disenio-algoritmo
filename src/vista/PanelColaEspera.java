@@ -75,11 +75,6 @@ public class PanelColaEspera extends javax.swing.JPanel {
                 "ID", "Fecha"
             }
         ));
-        tblColaEspera.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                tblColaEsperaFocusGained(evt);
-            }
-        });
         jScrollPane1.setViewportView(tblColaEspera);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 780, 297));
@@ -207,10 +202,6 @@ public class PanelColaEspera extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnNoValidarActionPerformed
-
-    private void tblColaEsperaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblColaEsperaFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblColaEsperaFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

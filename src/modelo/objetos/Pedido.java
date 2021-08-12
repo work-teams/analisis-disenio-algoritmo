@@ -20,7 +20,7 @@ public class Pedido implements Serializable {
     private Date fecha;
     private Cliente cliente;
     private ArrayList<BalonOxigeno> balones;
-    private int estado = 1; // 1=ColaEspera, 2=ColaLlenado, 3=Rechazados, 4=EliminadoLogico
+    private int estado = 1; // 1=ColaEspera, 2=ColaLlenado, 3=Rechazados, 4=EliminadoLogico , 5=Despachado
 
     // CONSTRUCTOR
     public Pedido(int id, Date fecha, Cliente cliente, ArrayList<BalonOxigeno> balones) {

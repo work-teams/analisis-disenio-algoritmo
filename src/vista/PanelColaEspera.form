@@ -62,9 +62,6 @@
                   </Table>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tblColaEsperaFocusGained"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

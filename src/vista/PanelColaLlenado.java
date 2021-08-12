@@ -5,11 +5,23 @@
  */
 package vista;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import javax.swing.table.DefaultTableModel;
+import modelo.estructuras.ColaDeLlenado;
+import modelo.estructuras.Lista;
+import modelo.objetos.BalonOxigeno;
+import modelo.objetos.Pedido;
+
 /**
  *
  * @author krypt97
  */
 public class PanelColaLlenado extends javax.swing.JPanel {
+
+    private Lista miLista;
+    private ColaDeLlenado miColaDeLlenado;
+    private DefaultTableModel miDefaultTableModel;
 
     /**
      * Creates new form PanelColaEspera
@@ -29,40 +41,37 @@ public class PanelColaLlenado extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblColaLlenado = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtDni = new javax.swing.JTextField();
+        txtEstado = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblBalonesOxigeno = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnDespachar = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pedidos por despachar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblColaLlenado.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        tblColaLlenado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Fecha"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblColaLlenado);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 780, 297));
 
@@ -86,36 +95,38 @@ public class PanelColaLlenado extends javax.swing.JPanel {
         jLabel4.setText("Apellido del cliente :");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 109, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 358, 34));
+        txtDni.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        txtDni.setFocusable(false);
+        jPanel2.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 358, 34));
 
-        jTextField2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 44, 358, 34));
+        txtEstado.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        txtEstado.setFocusable(false);
+        jPanel2.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 44, 358, 34));
 
-        jTextField3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 136, 358, 34));
+        txtNombre.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        txtNombre.setFocusable(false);
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 136, 358, 34));
 
-        jTextField4.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 136, 358, 34));
+        txtApellido.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        txtApellido.setFocusable(false);
+        jPanel2.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 136, 358, 34));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 328, 800, 191));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Balones de oxígeno", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblBalonesOxigeno.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        tblBalonesOxigeno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código balón", "Capacidad"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tblBalonesOxigeno.setFocusable(false);
+        jScrollPane2.setViewportView(tblBalonesOxigeno);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 780, 175));
 
@@ -123,16 +134,43 @@ public class PanelColaLlenado extends javax.swing.JPanel {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jButton1.setText("Despachar pedido");
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 280, 36));
+        btnDespachar.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        btnDespachar.setText("Despachar pedido");
+        btnDespachar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDespacharActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnDespachar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 280, 36));
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 724, 800, 56));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDespacharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDespacharActionPerformed
+        // TODO add your handling code here:
+        // Si la tabla contiene filas procede con la lógica
+        if (tblColaLlenado.getRowCount() != 0) {
+            miLista.modificarEstado((Integer) tblColaLlenado.getValueAt(0, 0), 5); // Estado: 5=Despachado
+            miColaDeLlenado.desencolar();
+            // Si la cola no esta vacia carga las tablas, sino limpia los campos
+            if (miColaDeLlenado.obtener() != null) {
+                setTblColaLlenado(miColaDeLlenado.getCola());
+                setFormularioCliente(miColaDeLlenado.obtener());
+                setTblBalonesOxigeno(miColaDeLlenado.obtener().getBalones());
+            } else {
+                setTblColaLlenado(miColaDeLlenado.getCola());
+                txtDni.setText("");
+                txtNombre.setText("");
+                txtApellido.setText("");
+                txtEstado.setText("");
+                setTblBalonesOxigeno(new ArrayList<>());
+            }
+        }
+    }//GEN-LAST:event_btnDespacharActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnDespachar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -143,11 +181,61 @@ public class PanelColaLlenado extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable tblBalonesOxigeno;
+    private javax.swing.JTable tblColaLlenado;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtDni;
+    private javax.swing.JTextField txtEstado;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    // Enlace a lista enlazada
+    public void setListaEnlazada(Lista miLista) {
+        this.miLista = miLista;
+    }
+
+    // Enlace a cola de espera
+    public void setColaDeLlenado(ColaDeLlenado miColaDeLlenado) {
+        this.miColaDeLlenado = miColaDeLlenado;
+    }
+
+    // Métodos auxiliares
+    public void setTblColaLlenado(LinkedList<Pedido> misPedidos) {
+        String[] columnas = {"ID", "Fecha"};
+        Object[][] miData = new Object[misPedidos.size()][2];
+        for (int i = 0; i < misPedidos.size(); i++) {
+            miData[i][0] = misPedidos.get(i).getId();
+            miData[i][1] = misPedidos.get(i).getFecha();
+        }
+        miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tblColaLlenado.setModel(miDefaultTableModel);
+    }
+
+    public void setTblBalonesOxigeno(ArrayList<BalonOxigeno> misBalonesOxigeno) {
+        String[] columnas = {"Código", "Capacidad"};
+        Object[][] miData = new Object[misBalonesOxigeno.size()][2];
+        for (int i = 0; i < misBalonesOxigeno.size(); i++) {
+            miData[i][0] = misBalonesOxigeno.get(i).getCodigo();
+            miData[i][1] = misBalonesOxigeno.get(i).getCapacidad();
+        }
+        miDefaultTableModel = new DefaultTableModel(miData, columnas);
+        tblBalonesOxigeno.setModel(miDefaultTableModel);
+    }
+
+    public void setFormularioCliente(Pedido miPedido) {
+        txtDni.setText(miPedido.getCliente().getDni());
+        txtApellido.setText(miPedido.getCliente().getApellido());
+        txtNombre.setText(miPedido.getCliente().getNombre());
+        switch (miPedido.getCliente().getEstadoPaciente()) {
+            case 1:
+                txtEstado.setText("Grave");
+                break;
+            case 2:
+                txtEstado.setText("Moderado");
+                break;
+            case 3:
+                txtEstado.setText("Leve");
+                break;
+        }
+    }
 }
