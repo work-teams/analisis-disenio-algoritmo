@@ -71,8 +71,17 @@ public class Main {
         miLista.setColaDeLlenado(miColaDeLlenado);
         miLista.setColaDeRechazados(miColaDeRechazados);
         
-        // Conectando panele registrar pedido a lista enlazada
+        // Conectando controlador a cola de espera
+        miControladorVistas.setColaDeEspera(miColaDeEspera);
+
+        // Conectando panel registrar pedido a lista enlazada
         miPanelRegistrarPedido.setListaEnlazada(miLista);
+        
+        // Conectando panel cola de espera a lista enlazada
+        miPanelColaEspera.setListaEnlazada(miLista);
+        
+        // Conectando panel cola de espera a cola de espera
+        miPanelColaEspera.setColaDeEspera(miColaDeEspera);
     }
 
 }

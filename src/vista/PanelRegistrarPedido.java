@@ -127,6 +127,11 @@ public class PanelRegistrarPedido extends javax.swing.JPanel {
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 98));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Balones de oxígneo"));
+        jPanel5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPanel5FocusLost(evt);
+            }
+        });
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblBalonesOxigeno.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -204,6 +209,7 @@ public class PanelRegistrarPedido extends javax.swing.JPanel {
         setTblBalonesOxigeno(misBalonesOxigeno);
         txtCodigoBalon.setText("");
         txtCapacidadBalon.setText("");
+        txtCodigoBalon.requestFocus();
     }//GEN-LAST:event_btnAgregarBalonActionPerformed
 
     private void btnEliminarBalonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarBalonActionPerformed
@@ -217,7 +223,7 @@ public class PanelRegistrarPedido extends javax.swing.JPanel {
     private void btnGenerarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarPedidoActionPerformed
         // TODO add your handling code here:
         nuevoCliente = new Cliente(txtDni.getText(), txtNombre.getText(), txtApellido.getText(), cmbBoxEstado.getSelectedIndex()+1);
-        nuevoPedido = new Pedido(miLista.getTamanio()+1, new Date(), nuevoCliente, misBalonesOxigeno);
+        nuevoPedido = new Pedido(miLista.getTamanio()+1, new Date(), nuevoCliente, (ArrayList<BalonOxigeno>)misBalonesOxigeno.clone()); // Por esta mrd ".clone()" casi me vuelvo loco >:'v
         miLista.agregarPedido(nuevoPedido);
         txtDni.setText("");
         txtNombre.setText("");
@@ -247,6 +253,12 @@ public class PanelRegistrarPedido extends javax.swing.JPanel {
         txtCapacidadBalon.setText(tblBalonesOxigeno.getValueAt(tblBalonesOxigeno.getSelectedRow(), 1).toString());
         jPanel5.requestFocus();
     }//GEN-LAST:event_tblBalonesOxigenoFocusGained
+
+    private void jPanel5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel5FocusLost
+        // TODO add your handling code here:
+        txtCodigoBalon.setText("");
+        txtCapacidadBalon.setText("");
+    }//GEN-LAST:event_jPanel5FocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
