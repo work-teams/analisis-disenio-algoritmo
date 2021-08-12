@@ -7,6 +7,7 @@ package controlador;
 
 import modelo.estructuras.ColaDeEspera;
 import modelo.estructuras.ColaDeLlenado;
+import modelo.estructuras.Lista;
 import vista.PanelColaEspera;
 import vista.PanelColaLlenado;
 import vista.PanelHistorialPedidos;
@@ -29,6 +30,7 @@ public class ControladorVistas {
     private PanelHistorialPedidos miPanelHistorialPedidos;
     private ColaDeEspera miColaDeEspera;
     private ColaDeLlenado miColaDeLlenado;
+    private Lista miLista;
 
     // Enlace a ventana principal
     public void setVentanaPrincipal(VentanaPrincipal miVentanaPrincipal) {
@@ -86,6 +88,11 @@ public class ControladorVistas {
     // Enlace a cola de llenado
     public void setColaDeLlenado(ColaDeLlenado miColaDeLlenado) {
        this.miColaDeLlenado = miColaDeLlenado;
+    }
+    
+    // Enlace a lista enlazada
+    public void setListaEnlazada(Lista miLista) {
+       this.miLista = miLista;
     }
 
     // Métodos de clase controlador
@@ -148,5 +155,10 @@ public class ControladorVistas {
         this.miPanelPedidosRechazados.setVisible(false);
 
         this.miPanelHistorialPedidos.setVisible(true);
+        
+        // Si la lista no está vacia, carga las tablas
+        if (!miLista.isEmpty()) {
+            this.miPanelHistorialPedidos.setTblListaEnlazada(miLista.getListaEnlazada());
+        }
     }
 }
