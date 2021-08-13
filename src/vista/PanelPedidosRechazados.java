@@ -79,7 +79,7 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel0.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pedidos rechazados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
+        jPanel0.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cola de pedidos rechazados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
         jPanel0.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblColaRechazados.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -88,7 +88,7 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Date"
+                "ID", "Fecha"
             }
         ));
         jScrollPane2.setViewportView(tblColaRechazados);
@@ -97,16 +97,16 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
 
         add(jPanel0, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 209));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalles del primer pedido", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel1.setText("D.N.I. del cliente :");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 17, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 26, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel2.setText("Estado del peciente :");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 17, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 26, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel3.setText("Nombre del cliente :");
@@ -117,7 +117,7 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 109, -1, -1));
 
         txtDni.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jPanel1.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 358, 34));
+        jPanel1.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 53, 358, 34));
 
         txtNombre.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 136, 358, 34));
@@ -127,7 +127,7 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
 
         cmbBoxEstado.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         cmbBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grave", "Moderado", "Leve" }));
-        jPanel1.add(cmbBoxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 44, 358, 34));
+        jPanel1.add(cmbBoxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 53, 358, 34));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 209, 800, 191));
 
@@ -245,6 +245,8 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
         if (tblBalonesOxigeno.getSelectedRow() != -1) {
             misBalonesOxigeno.remove(tblBalonesOxigeno.getSelectedRow());
             setTblBalonesOxigeno(misBalonesOxigeno);
+            txtCodigo.setText("");
+            txtCapacidad.setText("");
         }
     }//GEN-LAST:event_btnEliminarBalonActionPerformed
 
