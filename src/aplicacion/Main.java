@@ -36,6 +36,14 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
+        // Instancia de colas
+        ColaDeEspera miColaDeEspera = new ColaDeEspera();
+        ColaDeLlenado miColaDeLlenado = new ColaDeLlenado();
+        ColaDeEspera miColaDeRechazados = new ColaDeEspera();
+
+        // Instancia de lista enlanzada
+        Lista miLista = new Lista();
+
         // Instancia ventana principal
         VentanaPrincipal miVentanaPrincipal = new VentanaPrincipal();
 
@@ -46,66 +54,57 @@ public class Main {
         PanelPedidosRechazados miPanelPedidosRechazados = new PanelPedidosRechazados();
         PanelHistorialPedidos miPanelHistorialPedidos = new PanelHistorialPedidos();
 
-        // Conectando controlador vistas a vistas (ventana, paneles)
+        // Instancia de controlador vistas
         ControladorVistas miControladorVistas = new ControladorVistas();
-        miControladorVistas.setVentanaPrincipal(miVentanaPrincipal);
-        miControladorVistas.setPanelRegistrarPedido(miPanelRegistrarPedido);
-        miControladorVistas.setPanelColaEspera(miPanelColaEspera);
-        miControladorVistas.setPanelColaLlenado(miPanelColaLlenado);
-        miControladorVistas.setPanelPedidosRechazados(miPanelPedidosRechazados);
-        miControladorVistas.setPanelHistorialPedidos(miPanelHistorialPedidos);
-
-        // Conectando ventana principal a controlador vistas
-        miVentanaPrincipal.setControladorVistas(miControladorVistas);
-
-        // Instancia de colas
-        ColaDeEspera miColaDeEspera = new ColaDeEspera();
-        ColaDeLlenado miColaDeLlenado = new ColaDeLlenado();
-        ColaDeEspera miColaDeRechazados = new ColaDeEspera();
-
-        // Instancia de lista enlanzada
-        Lista miLista = new Lista();
 
         // Conectando lista enlazada con colas
         miLista.setColaDeEspera(miColaDeEspera);
         miLista.setColaDeLlenado(miColaDeLlenado);
         miLista.setColaDeRechazados(miColaDeRechazados);
 
-        // Conectando controlador a cola de espera
+        // Conectando controlador vistas con ventana principal
+        miControladorVistas.setVentanaPrincipal(miVentanaPrincipal);
+        // Conectando controlador vistas con paneles
+        miControladorVistas.setPanelRegistrarPedido(miPanelRegistrarPedido);
+        miControladorVistas.setPanelColaEspera(miPanelColaEspera);
+        miControladorVistas.setPanelColaLlenado(miPanelColaLlenado);
+        miControladorVistas.setPanelPedidosRechazados(miPanelPedidosRechazados);
+        miControladorVistas.setPanelHistorialPedidos(miPanelHistorialPedidos);
+        // Conectando controlador vistas con cola de espera
         miControladorVistas.setColaDeEspera(miColaDeEspera);
-
-        // Conectando cotrolador a cola de llenado
+        // Conectando cotrolador vistas con cola de llenado
         miControladorVistas.setColaDeLlenado(miColaDeLlenado);
-        
-        // Conectando controlador a cola de rechazados
+        // Conectando controlador vistas con cola de rechazados
         miControladorVistas.setColaDeRechazados(miColaDeRechazados);
-
-        // Conectando cotrolador a lista enlazada
+        // Conectando cotrolador vistas con lista enlazada
         miControladorVistas.setListaEnlazada(miLista);
 
-        // Conectando panel registrar pedido a lista enlazada
+        // Conectando ventana principal con controlador vistas
+        miVentanaPrincipal.setControladorVistas(miControladorVistas);
+
+        // Conectando panel registrar pedido con lista enlazada
         miPanelRegistrarPedido.setListaEnlazada(miLista);
 
-        // Conectando panel cola de espera a lista enlazada
+        // Conectando panel cola de espera con cola de espera
+        miPanelColaEspera.setColaDeEspera(miColaDeEspera);
+        // Conectando panel cola de espera con lista enlazada
         miPanelColaEspera.setListaEnlazada(miLista);
 
-        // Conectando panel cola de espera a cola de espera
-        miPanelColaEspera.setColaDeEspera(miColaDeEspera);
-
-        // Conectando panel cola de llenado
+        // Conectando panel cola de llenado con cola de llenado
         miPanelColaLlenado.setColaDeLlenado(miColaDeLlenado);
-
-        // Conectando panel cola de llenado a lista enlazada
+        // Conectando panel cola de llenado con lista enlazada
         miPanelColaLlenado.setListaEnlazada(miLista);
 
-        // Conectando panel pedidos rechazados a lista enlazada
-        miPanelPedidosRechazados.setListaEnlazada(miLista);
-        
-        // Conectando panel pedidos rechazados a cola de rechazados
+        // Conectando panel pedidos rechazados con cola de rechazados
         miPanelPedidosRechazados.setColaDeRechazados(miColaDeRechazados);
-        
-        // Conectando panel hostorial a lista enlazada
+        // Conectando panel pedidos rechazados con lista enlazada
+        miPanelPedidosRechazados.setListaEnlazada(miLista);
+
+        // Conectando panel hostorial con lista enlazada
         miPanelHistorialPedidos.setListaEnlazada(miLista);
+
+        // Cargando datos almacenado en archivo a lista enlazada
+        miControladorVistas.recuperarDatosDeArchivo();
     }
 
 }

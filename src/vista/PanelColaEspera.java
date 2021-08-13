@@ -63,7 +63,7 @@ public class PanelColaEspera extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pedidos por validar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cola de pedidos por validar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblColaEspera.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -81,15 +81,16 @@ public class PanelColaEspera extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 328));
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalles del primer pedido", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel1.setText("D.N.I. del cliente :");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 17, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 26, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel2.setText("Estado del peciente :");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 17, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 26, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel3.setText("Nombre del cliente :");
@@ -101,11 +102,11 @@ public class PanelColaEspera extends javax.swing.JPanel {
 
         txtDni.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         txtDni.setFocusable(false);
-        jPanel2.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 358, 34));
+        jPanel2.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 53, 358, 34));
 
         txtEstado.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         txtEstado.setFocusable(false);
-        jPanel2.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 44, 358, 34));
+        jPanel2.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 53, 358, 34));
 
         txtNombre.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         txtNombre.setFocusable(false);
@@ -126,7 +127,7 @@ public class PanelColaEspera extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Código del balón", "Capacidad"
+                "Código", "Capacidad"
             }
         ));
         tblBalonesOxigeno.setFocusable(false);

@@ -5,9 +5,12 @@
  */
 package controlador;
 
+import java.util.LinkedList;
+import modelo.archivos.Archivo;
 import modelo.estructuras.ColaDeEspera;
 import modelo.estructuras.ColaDeLlenado;
 import modelo.estructuras.Lista;
+import modelo.objetos.Pedido;
 import vista.PanelColaEspera;
 import vista.PanelColaLlenado;
 import vista.PanelHistorialPedidos;
@@ -102,6 +105,23 @@ public class ControladorVistas {
     }
 
     // Métodos de clase controlador
+    public void recuperarDatosDeArchivo() {
+        // Si existe el archivo, carga los pedidos en la lista enlazada
+       if (Archivo.recuperarDatosDeArchivo() != null) {
+           LinkedList<Pedido> misPedidosRecuperado = Archivo.recuperarDatosDeArchivo();
+           for (int i = 0; i < misPedidosRecuperado.size(); i++) {
+               miLista.agregarPedido(misPedidosRecuperado.get(i));
+           }
+       }
+    }
+    
+    public void guardarDatosEnArchivo() {
+        // Si la lista enlazada no está vacia, guarda los datos en archivo
+        if (!miLista.isEmpty()) {
+            Archivo.guardarDatosEnArchivo(miLista.getListaEnlazada());
+        }
+    }
+    
     public void mostrarPanelRegistrarPedido() {
         this.miPanelColaEspera.setVisible(false);
         this.miPanelColaLlenado.setVisible(false);
@@ -175,6 +195,8 @@ public class ControladorVistas {
         this.miPanelPedidosRechazados.setVisible(false);
 
         this.miPanelHistorialPedidos.setVisible(true);
+        
+        this.miPanelHistorialPedidos.limpiarCampos();
         
         // Si la lista no está vacia, carga las tablas
         if (!miLista.isEmpty()) {

@@ -82,11 +82,12 @@ public class PanelHistorialPedidos extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 328));
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detelles del pedido", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto", 0, 15))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel1.setText("D.N.I. del cliente :");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 17, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 26, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel2.setText("Nombre del cliente :");
@@ -94,7 +95,7 @@ public class PanelHistorialPedidos extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel3.setText("Estado del peciente :");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 17, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 26, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel4.setText("Apellido del cliente :");
@@ -102,7 +103,7 @@ public class PanelHistorialPedidos extends javax.swing.JPanel {
 
         txtDni.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         txtDni.setFocusable(false);
-        jPanel2.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 44, 358, 37));
+        jPanel2.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 53, 358, 37));
 
         txtNombre.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         txtNombre.setFocusable(false);
@@ -110,7 +111,7 @@ public class PanelHistorialPedidos extends javax.swing.JPanel {
 
         txtEstado.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         txtEstado.setFocusable(false);
-        jPanel2.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 44, 358, 37));
+        jPanel2.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 53, 358, 37));
 
         txtApellido.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         txtApellido.setFocusable(false);
@@ -127,7 +128,7 @@ public class PanelHistorialPedidos extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Código del balón", "Capacidad"
+                "Código", "Capacidad"
             }
         ));
         tblBalonesOxigeno.setFocusable(false);
@@ -226,5 +227,13 @@ public class PanelHistorialPedidos extends javax.swing.JPanel {
                 txtEstado.setText("Leve");
                 break;
         }
+    }
+    
+    public void limpiarCampos() {
+        txtDni.setText("");
+        txtApellido.setText("");
+        txtNombre.setText("");
+        txtEstado.setText("");
+        setTblBalonesOxigeno(new ArrayList<>());
     }
 }

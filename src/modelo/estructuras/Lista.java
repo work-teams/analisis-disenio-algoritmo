@@ -132,26 +132,4 @@ public class Lista {
         }
         return misPedidos;
     }
-
-//    public void rellenarColas() {
-//        if (cabeza != null) {
-//            Nodo actual = cabeza;
-//            while (actual != null) {
-//                switch (actual.pedido.getEstado()) {
-//                    case 1:
-//                        miColaDeEspera.encolar(actual.pedido);
-//                        break;
-//                    case 2:
-//                        miColaDeLlenado.encolar(actual.pedido);
-//                        break;
-//                    case 3:
-//                        miColaDeRechazados.encolar(actual.pedido);
-//                        break;
-//                }
-//                actual = actual.siguiente;
-//            }
-//            miColaDeEspera.ordenarPrioridad();
-//            miColaDeRechazados.ordenarPrioridad();
-//        }
-//    }
 }

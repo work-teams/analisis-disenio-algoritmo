@@ -249,9 +249,12 @@ public class PanelRegistrarPedido extends javax.swing.JPanel {
 
     private void tblBalonesOxigenoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblBalonesOxigenoFocusGained
         // TODO add your handling code here:
-        txtCodigoBalon.setText(tblBalonesOxigeno.getValueAt(tblBalonesOxigeno.getSelectedRow(), 0).toString());
-        txtCapacidadBalon.setText(tblBalonesOxigeno.getValueAt(tblBalonesOxigeno.getSelectedRow(), 1).toString());
-        jPanel5.requestFocus();
+        // Si se seleccionó una fila de la tabla, carga los valores en el txt field
+        if (tblBalonesOxigeno.getSelectedRow() != -1) {
+            txtCodigoBalon.setText(tblBalonesOxigeno.getValueAt(tblBalonesOxigeno.getSelectedRow(), 0).toString());
+            txtCapacidadBalon.setText(tblBalonesOxigeno.getValueAt(tblBalonesOxigeno.getSelectedRow(), 1).toString());
+            jPanel5.requestFocus();
+        }
     }//GEN-LAST:event_tblBalonesOxigenoFocusGained
 
     private void jPanel5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel5FocusLost
