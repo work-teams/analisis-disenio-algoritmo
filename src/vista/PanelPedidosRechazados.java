@@ -278,6 +278,14 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
                 setTblBalonesOxigeno(new ArrayList<>());
             }
         }
+
+        // Si la cola contiene elementos actualiza el id y balón de oxigeno
+        if (miColaDeRechazados.obtener() != null) {
+            // Actualiza el id del nuevo primer elemento de la cola
+            idPedido = miColaDeRechazados.obtener().getId();
+            // Actualiza los balones de oxígeno del nuevo primer elemento de la cola
+            misBalonesOxigeno = miColaDeRechazados.obtener().getBalones();
+        }
     }//GEN-LAST:event_btnModificarPedidoActionPerformed
 
     private void btnEliminarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPedidoActionPerformed
@@ -300,6 +308,14 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
                 cmbBoxEstado.setSelectedIndex(0);
                 setTblBalonesOxigeno(new ArrayList<>());
             }
+        }
+
+        // Si la cola contiene elementos actualiza el id y balón de oxigeno
+        if (miColaDeRechazados.obtener() != null) {
+            // Actualiza el id del nuevo primer elemento de la cola
+            idPedido = miColaDeRechazados.obtener().getId();
+            // Actualiza los balones de oxígeno del nuevo primer elemento de la cola
+            misBalonesOxigeno = miColaDeRechazados.obtener().getBalones();
         }
     }//GEN-LAST:event_btnEliminarPedidoActionPerformed
 
