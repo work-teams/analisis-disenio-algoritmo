@@ -72,7 +72,7 @@ public class PanelColaEspera extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Fecha"
+                "ID", "Fecha", "Estado del Paciente"
             }
         ));
         jScrollPane1.setViewportView(tblColaEspera);
@@ -238,11 +238,22 @@ public class PanelColaEspera extends javax.swing.JPanel {
 
     // Métodos auxiliares
     public void setTblColaEspera(LinkedList<Pedido> misPedidos) {
-        String[] columnas = {"ID", "Fecha"};
-        Object[][] miData = new Object[misPedidos.size()][2];
+        String[] columnas = {"ID", "Fecha", "Estado del Paciente"};
+        Object[][] miData = new Object[misPedidos.size()][3];
         for (int i = 0; i < misPedidos.size(); i++) {
             miData[i][0] = misPedidos.get(i).getId();
             miData[i][1] = misPedidos.get(i).getFecha();
+            switch (misPedidos.get(i).getCliente().getEstadoPaciente()) {
+                case 1:
+                    miData[i][2] = "Grave";
+                    break;
+                case 2:
+                    miData[i][2] = "Moderado";
+                    break;
+                case 3:
+                    miData[i][2] = "Leve";
+                    break;
+            }
         }
         miDefaultTableModel = new DefaultTableModel(miData, columnas);
         tblColaEspera.setModel(miDefaultTableModel);

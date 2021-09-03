@@ -88,7 +88,7 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Fecha"
+                "ID", "Fecha", "Estado del Paciente"
             }
         ));
         jScrollPane2.setViewportView(tblColaRechazados);
@@ -136,7 +136,7 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jLabel5.setText("Código del balon");
+        jLabel5.setText("Código del balon :");
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 17, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -372,11 +372,22 @@ public class PanelPedidosRechazados extends javax.swing.JPanel {
 
     // Métodos auxiliares de clase
     public void setTblColaRechazados(LinkedList<Pedido> misPedidos) {
-        String[] columnas = {"ID", "Fecha"};
-        Object[][] miData = new Object[misPedidos.size()][2];
+        String[] columnas = {"ID", "Fecha", "Estado Del Paciente"};
+        Object[][] miData = new Object[misPedidos.size()][3];
         for (int i = 0; i < misPedidos.size(); i++) {
             miData[i][0] = misPedidos.get(i).getId();
             miData[i][1] = misPedidos.get(i).getFecha();
+            switch (misPedidos.get(i).getCliente().getEstadoPaciente()) {
+                case 1:
+                    miData[i][2] = "Grave";
+                    break;
+                case 2:
+                    miData[i][2] = "Moderado";
+                    break;
+                case 3:
+                    miData[i][2] = "Leve";
+                    break;
+            }
         }
         miDefaultTableModel = new DefaultTableModel(miData, columnas);
         tblColaRechazados.setModel(miDefaultTableModel);
